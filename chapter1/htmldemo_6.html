@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>表单控件</title>
+    </head>
+    <body>
+       <fieldset>
+        <legend>新用户注册</legend>
+        <form method="post" action="#">
+            <table colspan="2" align="center">
+                <tr>
+                    <td>用户名：</td>
+                    <td><input type="text" name="userName" /></td>
+                </tr>
+
+                <tr>
+                    <td align="right">密码：</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+
+                <tr>
+                    <td align="right">性别：</td>
+                    <td>
+                        <input type="radio" name="gender" value="male"/>男
+                        <input type="radio" name="gender" value="female"/>女
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">兴趣：</td>
+                    <td> 
+                        <input type="checkbox" name="interest" value="filem" />看电影
+                        <input type="checkbox" name="interest" value="code"/>看代码
+                        <input type="checkbox" name="interest" value="game"/>打游戏
+                    </td>
+                </tr>
+            </table>
+        </form>
+        </fieldset>
+    </body>
+</html>
