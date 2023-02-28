@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE library [
+    <!ELEMENT library (books,records)>
+    <!ELEMENT books (book+)>
+    <!ELEMENT book (title)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT records (item+)>
+    <!ELEMENT item (data,person)>
+    <!ELEMENT data (#PCDATA)>
+    <!ELEMENT person EMPTY>
+    <!ATTLIST book bookid ID #REQUIRED>
+    <!ATTLIST person name CDATA #REQUIRED>
+    <!ATTLIST person borrowed IDREFS #REQUIRED>
+]>
+
+<library>
+    <books>
+        <book bookid="b0001">
+            <title>java程序设计</title>
+        </book>
+        <book bookid="b0002">
+            <title>数据结构与算法</title>
+        </book>
+        <book bookid="b0003">
+            <title>web程序设计</title>
+        </book>
+    </books>
+    <records>
+        <item>
+            <data>2023-02-28</data>
+            <person name="张三" borrowed = "b0001 b0003"/>
+        </item>
+        <item>
+            <data>2023-02-28</data>
+            <person name="李四" borrowed="b0002 b0003"/>
+        </item>
+    </records>
+</library>
