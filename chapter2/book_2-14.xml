@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<书架 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="xmlbook.xsd">
+    <书>
+        <书名>java程序设计</书名>
+        <作者>李四</作者>
+        <售价>40.00元</售价>
+    </书>
+</书架>
