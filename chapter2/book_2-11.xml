@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<it315:书架 xmlns:it315 = "http://www.it315.org/xmlbook/schema">
+    <it315:书架>
+        <it315:书名>java程序设计</it315:书名>    
+        <it315:作者>张三</it315:作者>
+        <it315:售价>20.00元</it315:售价>
+    </it315:书架>
+</it315:书架>
