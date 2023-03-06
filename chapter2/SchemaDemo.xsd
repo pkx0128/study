@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!--Schema语法实例  -->
+    <!-- （1）元素定义 -->
+    <!-- 
+        <lastname>lisi</lastname>
+        <age>28</age>
+        <birthday>1990-01-01</birthday>
+     -->
+     <!-- 1.定义元素 -->
+     <xs:element name="lastname" type="xs:string"/>
+     <xs:element name="age" type="xs:integer"/>
+     <xs:element name="birthday" type="xs:date"/>
+
+     <!-- 2.属性定义 -->
+     <!-- 
+        <lastname lang="EN">lisi</lastname>
+      -->
+      <!-- 定义属性 -->
+      <xs:attribute name="lang" type="xs:string"/>
+
+      <!-- 3.简单类型 -->
+      <!-- 
+        （3.1）xs:minInclusive和xs:maxInclusive元素对值的限定
+        例：对年龄限定在18~60之间
+       -->
+       <xs:element name="myAge">
+            <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                    <xs:minInclusive value="18"/>
+                    <xs:maxInclusive value="60"/>
+                </xs:restriction>
+            </xs:simpleType>
+       </xs:element>
+
+       <!-- （3.2）xs:enumeration元素对一组值的限定 -->
+       <!-- 要限定元素Car的值只能为BWM,Audi,benz -->
+       <xs:element name="car">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="BWM"/>
+                    <xs:enumeration value="Audi"/>
+                    <xs:enumeration value="benz"/>
+                </xs:restriction>
+            </xs:simpleType>
+       </xs:element>
+
+       <!-- (3.3)xs:pattern元素对一系列值的限定 -->
+       <!-- 定义一个带有限定的元素letter,其值只能是字母a~z其中一个 -->
+       <xs:element name="letter">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:pattern value="[a~z]"/>
+            </xs:restriction>
+        </xs:simpleType>
+       </xs:element>
+
+       <!-- (3.4)xs:restriction元素对空白字符的限定 
+            如果要对空白字符进行处理，可使用whiteSpace元素
+            属性：preserve:表示不对元素中的任何空白字符进行处理
+                replace:表示移除所有的空白字符
+                collapse:表示将所有的空白字符缩减为一个单一字符
+        -->
+        <xs:element name="address">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:whiteSpace value="preserve"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+
+        <!-- 
+            4.复杂类型 
+            除简单类型外的所有类型都是复杂类型，复合元素有4种基本类型
+            4.1 空元素
+            4.2 包含其他元素的元素
+            4.3 仅包含文本的元素
+            4.4 包含元素和文本的元素
+        -->
+        <!-- <product prodid="1345"/>对应的schema文档定义 -->
+        <!-- 4.1 空元素 -->
+        <xs:element name="product">
+            <xs:complexType>
+                <xs:attribute name="prodid" type="xs:positiveInteger"/>
+            </xs:complexType>
+        </xs:element>
+        
+        <!-- 4.2 包含其他元素的元素 -->
+        <!-- 
+            <person>
+                <firstName>li</firstName>
+                <lastName>si</lastName>
+            </person>
+         -->
+         <xs:element name="person">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="firstName" type="xs:string"/>
+                    <xs:element name="lastName" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+
+         <!--
+             4.3 仅含文本的元素 
+             仅含文本的复合元素，需要使用simpleContent来添加内容
+             在使用简易内容时必须在simpleContent内定义拓展或限定
+             需要使用extension或restriction来扩展和限制元素的基本简易类型
+        -->
+        <!-- <shoesize country="france">35</shoesize> -->
+        <xs:element name="shoesize">
+            <xs:complexType>
+                <xs:simpleContent>
+                    <xs:extension base="xs:integer">
+                        <xs:attribute name="country" type="xs:string"/>
+                    </xs:extension>
+                </xs:simpleContent>
+            </xs:complexType>
+        </xs:element>
+
+        <!-- 4.4 包含元素和文本的元素 -->
+        <!-- 
+            <letter>
+                Dear Mr.<name>John Smith</name>.
+                Your order<orderid>1032</orderid>
+                will be shipped on <shipdate>2023-03-06</shipdate>
+            </letter>
+
+         -->
+         <xs:element name="myletter">
+            <xs:complexType mixed="true">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="orderid" type="xs:positiveInteger"/>
+                    <xs:element name="shipdate" type="xs:date"/>
+                </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+</xs:schema>
